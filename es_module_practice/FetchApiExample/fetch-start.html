@@ -58,7 +58,7 @@
         const verseChoose = document.querySelector("select");
         const poemDisplay = document.querySelector("pre");
 
-        versechoose.addEventListener("change", () => {
+        verseChoose.addEventListener("change", () => {
             const verse = verseChoose.value;
             updateDisplay(verse);
         });
@@ -66,7 +66,7 @@
         function updateDisplay(verse) {
             verse = verse.replace(" ", "").toLowerCase();
             const url = `${verse}.txt`;
-        }
+        
 
         //Call fetch(), passing in the URL
         fetch(url)
@@ -84,14 +84,15 @@
             })
             //When response.txt() has succeeded, the `then()` handler is called with
             //the text, and we copy it into the `poemDisplay` box.
-            then((text) => {
+            .then((text) => {
                 poemDisplay.textContent = text;
             })
             //Catch any errors that might happen, and display a message
             //in the `poemDisplay` box.
             .catch((error) => {
                 poemDisplay.textContent = `Could not fetch verse: ${error}`;
-            })
+            });
+        }
             
             //Allows verse 1 to load as default and makes sure that the <select>
             //element alsways shows the correct value
