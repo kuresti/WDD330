@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="genres">
+        <option value="rock">Rock</option>
+        <option value="blues" selected>Blues</option>
+    </select>
+   <!-- <script type="module" src=".\forms.js"></script>-->
+
+    <form id="formElem">
+        <input type="text" name="firstName" value="John">
+        <input type="submit">
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const formElem = document.getElementById("formElem");
+    formElem.addEventListener("submit", (event)=> {
+        event.preventDefault();
+        const formData = new FormData(formElem);
+        formData.append("submitted", new Date()); 
+        for (let key of formData.keys()){
+            console.log(key, formData.get(key));
+        }
+            
+        
+    });
+});
+    </script>
+</body>
+</html>
