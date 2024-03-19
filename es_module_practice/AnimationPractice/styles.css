@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    
+}
+
+.box {
+    width: 300px;
+    height: 150px;
+    transform: skew(15deg);
+    background: #F0F8FF;
+    animation: myshape 6s ease-in 3s infinite alternate-reverse;
+}
+
+p {
+    font-size: 2em;
+    text-align: center;
+}
+
+@keyframes myshape {
+    0% {background-color: #1878cc; left:0px; top:0px;}
+       
+
+    15% {background-color: blueviolet; left:100px; top:10px;
+        transition: transform 0.4s linear 0s, border-top-left 0.1s linear 0s,
+        border-top-right radius 0.1s linear 01.s,
+        border-bottom-right-radiuss 01.s linear 0.2s,
+        border-bottom-left-raius 0.1s linear 0.3s;}
+    25% {background-color: cadetblue; left:100px; top:150px;
+         transform: rotate(240deg);}
+    45% {background-color: chartreuse; left:10px; top:100px;}
+    60% {background-color: cornflowerblue; left:50px; top:150px;}
+    80% {background-color: darkgreen; left:0px; top:100px;
+         transform: rotateX(90deg);}
+    100% {background-color: aliceblue; left:0px; top:0px;}
+}
