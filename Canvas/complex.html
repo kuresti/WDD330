@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas tutorial</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="150" height="200"></canvas>
+    <script>
+        function draw() {
+            const canvas = document.getElementById("tutorial");
+            if (canvas.getContext) {
+                const ctx = canvas.getContext("2d");
+                //this example draws 12 different arcs all with different angles and fills.
+                //The two for loops are for looping through the rows adn columns of arcs.
+                //For each arcc, we start a new path by calling beingPath(). In the code,
+                //each of the parameteres for the arc is in a variable for clarity, but you
+                //wouldn't necessarily do that in real life.
+                //the x ad y coordinates should be clear enough. radius and startAngle are fixed
+                //The endAngle starts at 180 degrees (half a circle) in the first column and is 
+                //increased by steps of 90 degrees, culminating in a complete circle in the last column.
+                //The statement for the clockwise parameter results in the first and third row being drawn
+                //as clockwise arcs and the second and fourth row as counterclockwise arcs. Finally, the
+                //if statement makes the top half stroked arcs and the bottom half filled arcs.
+                for(let i = 0; i < 4; i++) {
+                    for (let j = 0; j< 3; j++) {
+                        ctx.beginPath();
+                        const x = 25 + j * 50; //x coordinate
+                        const y = 25 + i * 50; //y coordinate
+                        const radius = 20; //Arc radius
+                        const startAngle = 0; //starting point on circle
+                        const endAngle = Math.PI + (Math.PI * j) / 2; //end point on circle
+                        const counterclockwise = i % 2 !== 0; //clockwise or counterclockwise
+                    
+                        ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise);
+                    
+                        if (i > 1) {
+                            ctx.fill();
+                        } else {
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+        }
+        window.addEventListener("load", draw);
+    </script>
+</body>
+</html>
